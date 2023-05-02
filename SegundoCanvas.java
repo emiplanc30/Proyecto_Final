@@ -14,7 +14,6 @@ import javax.swing.event.ChangeListener;
 
 public class SegundoCanvas extends JFrame implements ActionListener, ChangeListener, MouseListener
 {
-		JButton nahButton;
 		JSlider sliding;
 		JPanel ventanota;
 		
@@ -23,7 +22,6 @@ public class SegundoCanvas extends JFrame implements ActionListener, ChangeListe
 			
 			ventanota = new JPanel();
 			ventanota.setLayout(null);
-			
 			sliding = new JSlider(0,255);
 			sliding.setBounds(0,800, 300,100);
 			sliding.addChangeListener(this);
@@ -36,8 +34,10 @@ public class SegundoCanvas extends JFrame implements ActionListener, ChangeListe
 			ventanota.add(sliding);			
 			add(ventanota);
 			
+			
+			
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			setSize(1500, 900);
+			setSize(1500,900);
 			setLocationRelativeTo(null);					// centra la ventana
 			//setLayout(null);								// elimina plantillas
 			setResizable(false);							// no permite modificar el tamaño de la ventana
@@ -45,10 +45,13 @@ public class SegundoCanvas extends JFrame implements ActionListener, ChangeListe
 		}
 
 		@Override
+		public void actionPerformed(ActionEvent e) 
+		{		}
+
+		@Override
 		public void stateChanged(ChangeEvent e) 
 		{
 			System.out.println(sliding.getValue());
-			
 		}
 
 		@Override
@@ -64,21 +67,10 @@ public class SegundoCanvas extends JFrame implements ActionListener, ChangeListe
 		{		}
 
 		@Override
-		public void mouseEntered(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
+		public void mouseEntered(MouseEvent e) 
+		{		}
 
 		@Override
-		public void mouseExited(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void actionPerformed(ActionEvent e) 
-		{
-			// TODO Auto-generated method stub
-			
-		}
+		public void mouseExited(MouseEvent e) 
+		{		}
 }

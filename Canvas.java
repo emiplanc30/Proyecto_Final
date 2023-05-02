@@ -23,8 +23,7 @@ public class Canvas extends JPanel  implements MouseMotionListener{
 		addMouseMotionListener(this);
 		setBackground(Color.black);
 		
-				
-		img = new BufferedImage(500, 500, BufferedImage.TYPE_INT_ARGB);
+		img = new BufferedImage(740, 740, BufferedImage.TYPE_INT_ARGB);
 		
 		gfx = img.createGraphics();
 		layer0 = new BufferedImage(740, 740, BufferedImage.TYPE_INT_ARGB);
@@ -32,23 +31,17 @@ public class Canvas extends JPanel  implements MouseMotionListener{
 		int size = 25;
 		gL0 = layer0.createGraphics();
 		gL0.setColor(Color.white);
-		for(int i = 0; i < 25; i++)
-		{
-			for(int j = 0; j < 25; j++)
-			{
-				gL0.drawRect(j*size,i*size , size, size);
-			}
-		}
+		for(int y = 0; y <25; y++)
+			for(int x= 0; x < 25; x++)
+				gL0.drawRect(x*size, y*size, size, size);
 	}
-	
 	
 	public BufferedImage getImage()
 	{
 		return img;
 	}
-	 
-	public void paintComponent(Graphics g) 
-	{
+	
+	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
 
@@ -59,9 +52,6 @@ public class Canvas extends JPanel  implements MouseMotionListener{
 	    g.fillOval(x-5, y-5, 10, 10);
 	}
 
-	
-	
-
 	public void setImage(BufferedImage image) 
 	{
 		img = image;
@@ -69,7 +59,8 @@ public class Canvas extends JPanel  implements MouseMotionListener{
 	
 	@Override
 	public void mouseDragged(MouseEvent e) 
-	{	}
+	{
+	}
 
 	@Override
 	public void mouseMoved(MouseEvent e) 
