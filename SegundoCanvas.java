@@ -19,7 +19,6 @@ public class SegundoCanvas extends JFrame implements ActionListener, ChangeListe
 		
 		public SegundoCanvas() 
 		{
-			
 			ventanota = new JPanel();
 			ventanota.setLayout(null);
 			sliding = new JSlider(0,255);
@@ -34,14 +33,11 @@ public class SegundoCanvas extends JFrame implements ActionListener, ChangeListe
 			ventanota.add(sliding);			
 			add(ventanota);
 			
-			
-			
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			setSize(1500,900);
-			setLocationRelativeTo(null);					// centra la ventana
-			//setLayout(null);								// elimina plantillas
-			setResizable(false);							// no permite modificar el tamaño de la ventana
-			setVisible(true);	
+			setLocationRelativeTo(null);					
+			setResizable(false);							
+			setVisible(true);
 		}
 
 		@Override

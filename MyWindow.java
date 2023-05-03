@@ -52,8 +52,8 @@ public class MyWindow extends JFrame implements ActionListener , MouseListener ,
 	JSlider RGB2;
 	JSlider RGB3;
 	
-	static Graphics g;	
-	static BufferedImage img;
+	static Graphics g, gL0;	
+	static BufferedImage img, layer0;
 	
 	int width, height, x, y;
 	
@@ -65,32 +65,29 @@ public class MyWindow extends JFrame implements ActionListener , MouseListener ,
 		
 		components();		
 		
-		//img = new BufferedImage(500, 500, BufferedImage.TYPE_INT_RGB);
-		
-		//g = img.createGraphics();
-		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // al cerrar la ventana se detiene el programa
-		setSize(width,height);							// tamaño de la ventana
-		setLocationRelativeTo(null);					// centra la ventana
-		setLayout(null);								// elimina plantillas
-		setResizable(false);							// no permite modificar el tamaño de la ventana
-		setVisible(true);								// muestra la ventana	
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+		setSize(width,height);							
+		setLocationRelativeTo(null);					
+		setLayout(null);								
+		setResizable(false);							
+		setVisible(true);								
 	}
 			
 	private void components()
 	{
 		contentPane = new JPanel();
-		cargarButton = new JButton("Cargar");
-		guardarButton = new JButton("Guardar");
-		borrarButton = new JButton("BORRAR TODO");
-		colorButton1 = new JButton("BORRAR");
-		colorButton2 = new JButton();
-		colorButton3 = new JButton();
-		colorButton4 = new JButton();
-		colorButton5 = new JButton();
-		colorButton6 = new JButton();
-		colorButton6 = new JButton();
-		colorButton7 = new JButton();
+		
+		cargarButton 	= new JButton("CARGAR");
+		guardarButton 	= new JButton("GUARDAR");
+		borrarButton 	= new JButton("BORRAR TODO");
+		colorButton1 	= new JButton("BORRAR");
+		colorButton2 	= new JButton();
+		colorButton3 	= new JButton();
+		colorButton4 	= new JButton();
+		colorButton5 	= new JButton();
+		colorButton6 	= new JButton();
+		colorButton6 	= new JButton();
+		colorButton7 	= new JButton();
 
 
 		colorRGB = new JButton();
@@ -112,7 +109,7 @@ public class MyWindow extends JFrame implements ActionListener , MouseListener ,
 				
 		lbl.setBounds(0,0, width,height);
 		lbl.setForeground(Color.white);
-		lbl.setFont(new Font("Serif", Font.PLAIN, 70));
+		lbl.setFont(new Font("Serif", Font.PLAIN, 50));
 		
 		//COLORES RGB
 		RGB1.setBounds(20, 600, 335, 35);
@@ -122,7 +119,7 @@ public class MyWindow extends JFrame implements ActionListener , MouseListener ,
 		RGB3.setBounds(20, 660, 335, 35);
 		RGB3.addChangeListener(this); //AGREGAR SLIDERS	
 		
-		//BOTONES EXTRA
+		//BOTONES CARGAR Y GUARDAR
 		cargarButton.setBounds(50, 50, 150, 30);
 		cargarButton.addActionListener(this);	//AGREGAR BOTON
 		guardarButton.setBounds(225, 50, 150, 30);
@@ -265,7 +262,6 @@ public class MyWindow extends JFrame implements ActionListener , MouseListener ,
 					}
 				});
 		
-		
 		canvas.setBounds((width/2 )- 250, (height/2) - 390,626,626);	
 		canvas.addMouseListener(this);
 		
@@ -352,21 +348,21 @@ public class MyWindow extends JFrame implements ActionListener , MouseListener ,
 				ex.printStackTrace();
 			}
 		}
-		
 	}
 	
 	public void borrarTodo(ActionEvent e)
 	{
-		setBackground(Color.black);
+		canvas.fondoCanvas();		
+		canvas.cuadricula();
 	}
 	
 	public void actionPerformed(ActionEvent event) 
 	{	}
 
 	@Override
-	public void mouseClicked(MouseEvent e) {
-		
-		x = e.getX(); //get the x and y coordinates of
+	public void mouseClicked(MouseEvent e) 
+	{
+		x = e.getX(); 
 		y = e.getY();
 		
 		x /= 25;
@@ -391,14 +387,11 @@ public class MyWindow extends JFrame implements ActionListener , MouseListener ,
 	public void mouseEntered(MouseEvent e) {}
 
 	@Override
-	public void mouseExited(MouseEvent e) {	}
+	public void mouseExited(MouseEvent e) {}
 
 	@Override
 	public void stateChanged(ChangeEvent e) 
 	{
 		colorRGB.setBackground(new Color(RGB1.getValue(), RGB2.getValue(), RGB3.getValue()));
 	}
-	
-	
-	
 }
